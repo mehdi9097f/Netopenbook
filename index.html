@@ -1,77 +1,44 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Xs Warp</title>
+  <meta charset="UTF-8">
+  <title>VLESS Configs - VIP</title>
   <style>
     body {
-      background-color: #0d1117;
-      color: #c9d1d9;
-      font-family: sans-serif;
-      text-align: center;
+      background-color: #121212;
+      color: #00ffcc;
+      font-family: monospace;
       padding: 20px;
-    }
-    .container {
-      max-width: 600px;
-      margin: auto;
+      direction: ltr;
+      white-space: pre-wrap;
     }
     h1 {
-      margin-bottom: 20px;
+      text-align: center;
+      color: #ffffff;
     }
-    textarea {
-      width: 100%;
-      height: 120px;
-      background-color: #161b22;
-      color: #c9d1d9;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      padding: 10px;
-      font-family: monospace;
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
-    button {
-      background-color: #238636;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background-color: #2ea043;
-    }
-    .footer {
-      margin-top: 30px;
-      font-size: 14px;
-      color: #8b949e;
+    .config {
+      margin-top: 20px;
+      background: #1e1e1e;
+      padding: 15px;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🛰️ Xs Warp</h1>
-    
-    <textarea id="config" readonly>
-vless://example@yourdomain.com:443?encryption=none&type=ws&security=tls#Xs_Warp_Config
-    </textarea>
-    
-    <button onclick="copyConfig()">📋 کپی کن</button>
-    
-    <p class="footer">ساخته شده توسط شما 💻</p>
-  </div>
+  <h1>VLESS کانفیگ‌های VIP</h1>
 
-  <script>
-    function copyConfig() {
-      const textarea = document.getElementById("config");
-      textarea.select();
-      textarea.setSelectionRange(0, 99999);
-      document.execCommand("copy");
-      alert("کانفیگ کپی شد!");
-    }
-  </script>
+  <div class="config">
+vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@172.64.231.139:8880?path=%2F%3Fed%3D2560&security=none&encryption=none&host=frosty-boat-3fa7.mk66m4polo.workers.dev&type=ws#vip1
+
+vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@104.16.111.64:2086?path=%2F%3Fed%3D2560&security=none&encryption=none&host=frosty-boat-3fa7.mk66m4polo.workers.dev&type=ws#vip2
+
+vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@104.24.8.148:80?path=%2F%3Fed%3D2560&security=none&encryption=none&host=frosty-boat-3fa7.mk66m4polo.workers.dev&type=ws#vip3
+
+vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@172.64.151.132:2082?path=%2F%3Fed%3D2560&security=none&encryption=none&host=frosty-boat-3fa7.mk66m4polo.workers.dev&type=ws#vip4
+
+vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@190.93.245.82:2082?path=%2F%3Fed%3D2560&security=none&encryption=none&host=frosty-boat-3fa7.mk66m4polo.workers.dev&type=ws#vip5
+
+vless://7a80a8d9-92f9-4f0a-8352-9005a8215ab8@162.159.193.41:443?path=%2F%40Rayan_Config&security=tls&encryption=none&host=rayan-11.leila.dpdns.org&fp=chrome&type=ws&sni=rayan-11.leila.dpdns.org#test
+  </div>
 </body>
-  </html>
+</html>
