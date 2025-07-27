@@ -1,44 +1,128 @@
-<!DOCTYPE html>
-<html lang="fa">
+<!DOCTYPE html><html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>VLESS Configs - VIP</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NetOpenBook - کانفیگ‌ها</title>
   <style>
     body {
+      margin: 0;
+      font-family: sans-serif;
       background-color: #121212;
-      color: #00ffcc;
-      font-family: monospace;
+      color: white;
+      transition: background 0.3s, color 0.3s;
+    }
+    .light {
+      background-color: #f2f2f2;
+      color: #121212;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
       padding: 20px;
-      direction: ltr;
-      white-space: pre-wrap;
     }
-    h1 {
-      text-align: center;
-      color: #ffffff;
-    }
-    .config {
-      margin-top: 20px;
+    .card {
       background: #1e1e1e;
       padding: 15px;
       border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .light .card {
+      background: #fff;
+    }
+    .button {
+      margin: 5px;
+      padding: 5px 10px;
+      background-color: #2196f3;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #0b7dda;
+    }
+    .footer {
+      margin-top: 30px;
+      text-align: center;
+      opacity: 0.7;
+    }
+    .toggle {
+      position: fixed;
+      top: 10px;
+      left: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>VLESS کانفیگ‌های VIP</h1>
+  <button class="toggle button" onclick="toggleTheme()">🌓 تغییر حالت</button>
+  <div class="container">
+    <h2>📡 اطلاعات اتصال</h2>
+    <div id="netStatus">🔄 در حال بررسی اتصال...</div>
+    <div id="ipInfo">🌐 در حال دریافت آی‌پی...</div><h2>📦 لیست کانفیگ‌ها</h2>
+<div id="configs"></div>
 
-  <div class="config">
-vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@172.64.231.139:8880?path=%2F%3Fed%3D2560&security=none&encryption=none&host=frosty-boat-3fa7.mk66m4polo.workers.dev&type=ws#vip1
+<div class="footer">
+  ساخته شده توسط <strong>@T00T68</strong>
+</div>
 
-vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@104.16.111.64:2086?path=%2F%3Fed%3D2560&security=none&encryption=none&host=frosty-boat-3fa7.mk66m4polo.workers.dev&type=ws#vip2
+  </div>  <script>
+    const configs = [
+      "vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@188.114.97.176:8080?...#vip1",
+      "vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@162.159.152.95:2095?...#vip2",
+      "vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@190.93.245.154:2052?...#vip3",
+      "vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@104.16.139.189:80?...#vip4",
+      "vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@104.24.14.239:8080?...#vip5",
+      "vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@190.93.244.0:2095?...#vip6"
+    ];
 
-vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@104.24.8.148:80?path=%2F%3Fed%3D2560&security=none&encryption=none&host=frosty-boat-3fa7.mk66m4polo.workers.dev&type=ws#vip3
+    function renderConfigs() {
+      const container = document.getElementById('configs');
+      configs.forEach((link, i) => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+          <b>🎯 کانفیگ VIP ${i + 1}</b><br>
+          <small>${link}</small><br>
+          <button class="button" onclick="copyText('${link}')">📋 کپی</button>
+          <a href="${link}" class="button" target="_blank">🔗 باز کردن</a>
+        `;
+        container.appendChild(div);
+      });
+    }
 
-vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@172.64.151.132:2082?path=%2F%3Fed%3D2560&security=none&encryption=none&host=frosty-boat-3fa7.mk66m4polo.workers.dev&type=ws#vip4
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('✅ کپی شد');
+      });
+    }
 
-vless://c1829e52-04d7-4dd7-a064-ec98e94d5f9d@190.93.245.82:2082?path=%2F%3Fed%3D2560&security=none&encryption=none&host=frosty-boat-3fa7.mk66m4polo.workers.dev&type=ws#vip5
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+    }
 
-vless://7a80a8d9-92f9-4f0a-8352-9005a8215ab8@162.159.193.41:443?path=%2F%40Rayan_Config&security=tls&encryption=none&host=rayan-11.leila.dpdns.org&fp=chrome&type=ws&sni=rayan-11.leila.dpdns.org#test
-  </div>
-</body>
+    function checkInternet() {
+      const status = document.getElementById('netStatus');
+      if (navigator.onLine) {
+        status.innerHTML = '✅ آنلاین هستید';
+      } else {
+        status.innerHTML = '❌ اتصال قطع است';
+      }
+    }
+
+    function getIP() {
+      fetch('https://ipapi.co/json')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('ipInfo').innerHTML = `💡 آی‌پی شما: ${data.ip} - ${data.country_name} 🇨🇺`;
+        })
+        .catch(() => {
+          document.getElementById('ipInfo').innerText = 'خطا در دریافت آی‌پی';
+        });
+    }
+
+    renderConfigs();
+    checkInternet();
+    getIP();
+    setInterval(checkInternet, 5000);
+  </script></body>
 </html>
